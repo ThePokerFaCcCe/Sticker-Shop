@@ -1,0 +1,144 @@
+extends layout
+block content
+  
+  form(action="", method="post")
+    h1 پیغام های بالای سایت
+    hr.title
+    if(msgs.use)
+      label(for="ch-msgs-on")  فعال 
+      input#ch-msgs-on(type="radio", name="chmsgs", value = '1', required, checked)
+      span  | 
+      label(for="ch-msgs-off")  غیرفعال 
+      input#ch-msgs-off(type="radio", name="chmsgs", value = '0', required)
+    else
+      label(for="ch-msgs-on")  فعال 
+      input#ch-msgs-on(type="radio", name="chmsgs", value = '1', required)
+      span  | 
+      label(for="ch-msgs-off")  غیرفعال 
+      input#ch-msgs-off(type="radio", name="chmsgs", value = '0', required, checked)
+
+    #msgs
+      small(style="opacity:0.8") هر خط یک پیغام
+      textarea(name="msgs", cols="40", rows="7", required) #{msgs.value}
+    input(type="submit", value="ثبت")
+      
+
+  hr.separate
+  
+
+  form(action="", method="post", enctype='multipart/form-data')
+    h1 تصاویر بالای سایت
+    hr.title
+
+    if(headpic.use)
+      label(for="ch-headpic-on")  فعال 
+      input#ch-headpic-on(type="radio", name="chheadpic", value = '1', required, checked)
+      span  | 
+      label(for="ch-headpic-off")  غیرفعال 
+      input#ch-headpic-off(type="radio", name="chheadpic", value = '0', required)
+
+    else
+      label(for="ch-headpic-on")  فعال 
+      input#ch-headpic-on(type="radio", name="chheadpic", value = '1', required)
+      span  | 
+      label(for="ch-headpic-off")  غیرفعال 
+      input#ch-headpic-off(type="radio", name="chheadpic", value = '0', required, checked)
+
+    #headpic
+      if(headpic.value && headpic.value.length >0)
+        .added-hp
+          each hp of headpic.value
+            .hp
+              a.icon-eye.view-hp(href=`${staticPath}/${hp.pic}`, target="_blank")
+              img(src=`${staticPath}/${hp.pic}`)
+              a.icon-cross.del-hp(href=`?delete=${hp.id}`)
+              h4 #{hp.head}
+              p #{hp.text}
+
+      small افزودن تصویر جدید
+      input(type="text", name="picheader", placeholder="هدر تصویر")
+      input(type="text", name="pictext", placeholder="متن تصویر")
+      label#file(for='pic1') انتخاب فایل
+      input#pic1(type='file' name='pic' required)
+      img.file(src='' alt='FilePreview')
+    input(type="submit", value="افزودن / ثبت")
+
+  hr.separate
+    
+  form(action="", method="post", enctype='multipart/form-data')
+    h1 نمایش دسته بندی ها
+    hr.title
+
+    if(cats.use)
+      label(for="ch-cats-on")  فعال 
+      input#ch-cats-on(type="radio", name="chcats", value = '1', required, checked)
+      span  | 
+      label(for="ch-cats-off")  غیرفعال 
+      input#ch-cats-off(type="radio", name="chcats", value = '0', required)
+    else
+      label(for="ch-cats-on")  فعال 
+      input#ch-cats-on(type="radio", name="chcats", value = '1', required)
+      span  | 
+      label(for="ch-cats-off")  غیرفعال 
+      input#ch-cats-off(type="radio", name="chcats", value = '0', required, checked)
+
+    #cats
+      if(cats.value && cats.value.length >0)
+        .added-hp
+          each cat of cats.value
+            .hp
+              a.icon-eye.view-hp(href=`${staticPath}/${cat.pic}`, target="_blank")
+              img(src=`${staticPath}/${cat.pic}`)
+              a.icon-cross.del-hp(href=`?delete=${cat.id}`)
+              p #{cat.name}
+
+      select(name="catname")
+        each cat in categories
+          option(value=cat.name) #{cat.name}
+      label#file(for='pic') انتخاب فایل
+      input#pic(type='file' name='pic')
+      img.file(src='' alt='FilePreview')
+    input(type="submit", value="افزودن / ثبت")
+
+
+  hr.separate
+
+  
+  form(action="", method="post")
+    h1 نمایش محصولات
+    hr.title
+    if(items.use)
+      label(for="ch-items-on")  فعال 
+      input#ch-items-on(type="radio", name="chitems", value = '1', required, checked)
+      span  | 
+      label(for="ch-items-off")  غیرفعال 
+      input#ch-items-off(type="radio", name="chitems", value = '0', required)
+
+    else
+      label(for="ch-items-on")  فعال 
+      input#ch-items-on(type="radio", name="chitems", value = '1', required)
+      span  | 
+      label(for="ch-items-off")  غیرفعال 
+      input#ch-items-off(type="radio", name="chitems", value = '0', required, checked)
+
+
+    #items
+      span میتوانید کلمات زیر را بنویسید:
+        br
+        span
+          | جدید ترین
+          | - محبوب ترین
+          each cat in categories
+            span  - #{cat.name}
+      br
+      small(style="opacity:0.8") مثال: 
+      small(style="font-weight:bold") جدید ترین - 6
+      br
+      small(style="opacity:0.8") یعنی 6 عدد از محصولات جدید را نشان بده
+      textarea(name="items", cols="40", rows="7" required) #{items.value}
+    input(type="submit", value="ثبت")
+
+  
+  
+  script(src='/content/admin.js')
+  

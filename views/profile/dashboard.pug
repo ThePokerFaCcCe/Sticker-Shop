@@ -1,0 +1,14 @@
+extends layout
+block contents
+  .p-dashboard 
+    .p-user
+      h2.p-title پروفایل شما
+      form(action="/api/profile/user", method="post") 
+        label(for="username") نام کاربری
+        input#username(type="text", name="username", value=user.name)
+        label(for="email") ایمیل
+        input#email(type="email", name="email", value=user.email)
+        input(type="submit", value="تغییر پروفایل")
+
+block script
+  script(src="")

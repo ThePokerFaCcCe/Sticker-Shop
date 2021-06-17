@@ -1,0 +1,18 @@
+extends ../layout
+block content
+  ul.menu
+    li
+      a(href='/profile') داشبورد
+    li
+      a(href='/profile/edit') ویرایش مشخصات
+    li
+      a(href='/profile/address') آدرس های ذخیره شده
+    li
+      a(href='/profile/order') پیگیری سفارش
+    li
+      a(href='#') بزودی...
+    li
+      a(href='/logout') خروج از حساب
+  .content
+    .profile
+      block contents

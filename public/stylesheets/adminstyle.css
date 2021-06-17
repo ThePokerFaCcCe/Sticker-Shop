@@ -1,0 +1,70 @@
+body {
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+}
+ul {
+	display: block;
+	list-style: none;
+	width: 100%;
+	text-align: center;
+}
+ul li {
+	display: block;
+	width: 80%;
+	background-color: #ff5959;
+	margin: 10px auto;
+	padding: 10px 0;
+	border-radius: 15px;
+	font-weight: bold;
+	font-size: 16px;
+	color: white;
+	text-shadow: 0px 1px 0px #5f5f5f, 1px 0px 0px #5f5f5f, -1px 0px 0px #5f5f5f, 0px -1px 0px #5f5f5f;
+}
+.form {
+    margin-top:50px;
+	padding: 50px;
+	background-color: #29c3ff;
+	border-radius: 20px;
+	width: 30%;
+}
+.form h2 {
+	display: block;
+	text-align: center;
+	margin-bottom: 30px;
+}
+.form input {
+	display: block;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	padding: 5px 10px;
+	margin: 10px 0;
+	width: 100%;
+}
+.form input[type="submit"] {
+	background-color: #2994ff;
+	border: none;
+	color: #f3f3f3;
+	padding: 10px 0;
+	margin: 20px 0;
+}
+.form input[type="submit"]:focus {
+    border: none;
+}
+.form input[type="submit"]:hover {
+	background-color: #0080ff;
+}
+.form input[type="submit"]:active {
+	background-color: #005ebb;
+}
+.form input[type="checkbox"] {
+	display: inline-block;
+	width: auto;
+	margin: 30px 0px 0px;
+}
+.form input:focus{
+    border: 2px solid #005ebb;
+}
+.form input:focus::placeholder{
+    opacity: 0;
+}

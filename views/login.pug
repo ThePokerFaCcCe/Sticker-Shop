@@ -1,0 +1,19 @@
+extends layout
+block content
+    if(loggedIn)
+        h5.error #{loggedIn}
+    else
+        if(error&&error.length>0)
+            each err of error
+                h5.error #{err.msg}
+        form.auth(method="post", action='')
+            div.auth-info
+                span.auth-current ورود / 
+                a.auth-another(href='/signup') ثبت نام
+            input(type="email", name="email", placeholder="ایمیل", required)
+            input(type="password", name="pass", placeholder="رمز", required)
+            span
+                input(type="checkbox",  name="remember",  id="remember", checked)
+                label(for="remember") ذخیره
+            br
+            input(type="submit", value="ورود")

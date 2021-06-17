@@ -1,0 +1,66 @@
+extends layout
+block content
+  .content-box
+    .cat-filters
+      .cat-filter-search
+        input#scat(type='text' name='scat' placeholder='جستجو میان اجناس')
+        button#scatsubmit.icon-search
+      ul.cat-filter-categories
+        h6.cat-filter-header دسته‌بندی
+          each cat in categories
+            li
+              if(cat.name === catName)
+                a(href="/category/"+cat.name style='color: #f03123;') #{cat.name}
+              else
+                a(href="/category/"+cat.name) #{cat.name}
+
+      .cat-filter-sortby
+        h6.cat-filter-header مرتب سازی
+        span بر اساس 
+        select#cat-sortby(name='cat-sortby')
+          option(value='new' selected) جدید ترین
+          option(value='low') ارزان ترین
+          option(value='high') گران ترین
+          option(value='love') محبوب ترین
+      .cat-filter-price
+        h6.cat-filter-header بازه قیمت
+        span از
+        input#lower-price(type='number' name='lower-price' min='1000' max='1000000' step='500' value='1000')
+        span تومان
+        br
+        span تا
+        input#higher-price(type='number' name='higher-price' min='1000' max='1000000' step='500' value='1000000')
+        span تومان
+        button.submit-filter#submit-price اعمال
+    .cat-body
+      .cat-head
+        h4.cat-head-name #{(catName)?catName:"یافت نشد"}
+        span.cat-head-result-count
+          | نمایش
+          span 
+          | از #{(catName)?items.length:0} محصول
+
+      .cat-items
+        if(catName)
+          each item in items
+            .cat-item.slider-item(price=item.price item_id=item.id item_name=item.title like=item.likes date=item.add_date)
+              .slider-item-more-box
+                .slider-item-show-more-box
+                  span.slider-item-show-more بیشتر
+                .slider-item-more
+                  span.slider-item-like
+                    if(item.liked)
+                      span.icon-heart.liked(title='افزودن به علاقه‌مندی ها' )
+                        span.slider-item-likes-count #{item.likes}
+                    else
+                      span.icon-heart(title='افزودن به علاقه‌مندی ها' )
+                        span.slider-item-likes-count #{item.likes}
+                  a.slider-item-view(href=`${itemLink}/${item.id}`) مشاهده محصول
+                  span.slider-item-addcart #{(item.inCart)?"حذف از سبد":"افزودن به سبد"}
+                img.slider-item-img(src=staticPath +"/"+ item.pic alt="pic")
+              .slider-item-info
+                h6.slider-item-name #{item.title}
+                span.slider-item-price #{item.price}
+block script
+  script(src='/content/category.js')
+  script(src='/content/like.js')

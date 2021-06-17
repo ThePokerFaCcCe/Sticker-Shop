@@ -1,0 +1,185 @@
+.content-box {
+  display: block;
+  margin: 60px 40px;
+}
+.cat-body {
+  -webkit-transition: 1s all ease-in-out;
+  transition: 1s all ease-in-out;
+  width: 79%;
+  display: inline-block;
+}
+.cat-body .cat-head {
+  color: #fff;
+  border-top: 3px solid #ff5353;
+  border-bottom: 3px solid #ff5353;
+  background-color: #6a6868;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 5px 15px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  -webkit-box-shadow: 0 5px 5px 0 #ddd;
+  box-shadow: 0 5px 5px 0 #ddd;
+}
+.cat-body .cat-head-name {
+  display: inline-block;
+  font-size: 14px;
+  text-shadow: 0 0 0 #f00;
+}
+.cat-body .cat-head-result-count {
+  display: inline-block;
+}
+.cat-body .cat-head-result-count span {
+  font-weight: bold;
+}
+.cat-body .cat-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+}
+.cat-body .cat-items .cat-item {
+  width: 250px;
+  height: 350px;
+  margin: 10px;
+  border: 1px solid #eee;
+  -webkit-box-shadow: 0 0 5px 0 #ccc8;
+  box-shadow: 0 0 5px 0 #ccc8;
+}
+.cat-filters {
+  -webkit-transition: 1s all ease-in-out;
+  transition: 1s all ease-in-out;
+  margin-left: 1%;
+  color: #333;
+  width: 19%;
+  display: inline-block;
+  vertical-align: top;
+}
+.cat-filters > * {
+  margin-bottom: 25px;
+  width: 100%;
+}
+.cat-filters .cat-filter-search {
+  background-color: #3333;
+  color: #fff;
+  border-top: 3px solid #ff5353;
+  border-bottom: 3px solid #ff5353;
+  padding: 0 5px;
+  position: relative;
+  -webkit-box-shadow: 0 5px 5px 0 #ddd;
+  box-shadow: 0 5px 5px 0 #ddd;
+  border-radius: 3px;
+  color: #333;
+}
+.cat-filters .cat-filter-search input {
+  background: transparent;
+  padding: 5px 0;
+  padding-left: 0;
+  color: #333;
+  width: 100%;
+  padding-left: 15px;
+}
+.cat-filters .cat-filter-search button {
+  background: transparent;
+  position: absolute;
+  left: 5px;
+  top: 0;
+  bottom: 0;
+  cursor: default;
+  z-index: 1;
+}
+.cat-filters .cat-filter-categories li:hover a::before {
+  width: 100%;
+}
+.cat-filters .cat-filter-categories li:hover a {
+  color: #f00;
+}
+.cat-filters .cat-filter-categories li a {
+  padding: 5px 10px;
+  margin: 5px 0;
+  position: relative;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  display: inline-block;
+  color: #333;
+}
+.cat-filters .cat-filter-categories li a::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border-right: 1px solid #ffdada;
+  border-bottom: 1px solid #ffdada;
+  border-left: 1px solid #ffdada;
+  -webkit-box-shadow: -1px 3px 3px 0 #dbdbdb;
+  box-shadow: -1px 3px 3px 0 #dbdbdb;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+.cat-filters .cat-filter-header {
+  font-weight: bold;
+  border-bottom: 2px dashed #333;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.cat-filters .cat-filter-sortby select {
+  width: 100%;
+  border: 1px solid #ddd;
+  margin: 5px 0;
+}
+.cat-filters .cat-filter-price input {
+  border: 1px solid #ddd;
+  width: calc(100% - 56px);
+  padding: 5px 10px;
+}
+.cat-filters .cat-filter-price br {
+  margin: 12px 0;
+}
+.cat-filters .cat-filter-price button {
+  padding: 5px 15px;
+  background-color: #ff675c;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  color: #fff;
+  margin: 10px auto;
+  display: block;
+  cursor: pointer;
+}
+.cat-filters .cat-filter-price button:hover {
+  -webkit-box-shadow: 0 0 5px 0 #aaa;
+  box-shadow: 0 0 5px 0 #aaa;
+}
+@media only screen and (max-width: 850px) {
+  .content-box {
+    margin: 60px 20px;
+  }
+  .cat-filters {
+    width: 100%;
+  }
+  .cat-body {
+    width: 100%;
+  }
+}

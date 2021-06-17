@@ -1,0 +1,120 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('assets/font/icomoon.eot?44dnco');
+  src:  url('assets/font/icomoon.eot?44dnco#iefix') format('embedded-opentype'),
+    url('assets/font/icomoon.ttf?44dnco') format('truetype'),
+    url('assets/font/icomoon.woff?44dnco') format('woff'),
+    url('assets/font/icomoon.svg?44dnco#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change assets/font/*/
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-shopcart .path1:before {
+  content: "\e900";
+  color: rgb(44, 52, 60);
+}
+.icon-shopcart .path2:before {
+  content: "\e901";
+  margin-left: -1em;
+  color: rgb(48, 52, 60);
+}
+.icon-home:before {
+  content: "\e902";
+}
+.icon-pencil:before {
+  content: "\e905";
+}
+.icon-cart:before {
+  content: "\e93a";
+}
+.icon-phone:before {
+  content: "\e942";
+}
+.icon-location:before {
+  content: "\e947";
+}
+.icon-location2:before {
+  content: "\e948";
+}
+.icon-mobile2:before {
+  content: "\e959";
+}
+.icon-bubbles2:before {
+  content: "\e96d";
+}
+.icon-search:before {
+  content: "\e986";
+}
+.icon-rocket:before {
+  content: "\e9a5";
+}
+.icon-truck:before {
+  content: "\e9b0";
+}
+.icon-menu:before {
+  content: "\e9bd";
+}
+.icon-eye:before {
+  content: "\e9ce";
+}
+.icon-contrast:before {
+  content: "\e9d5";
+}
+.icon-heart:before {
+  content: "\e9da";
+}
+.icon-happy:before {
+  content: "\e9df";
+}
+.icon-happy2:before {
+  content: "\e9e0";
+}
+.icon-plus:before {
+  content: "\ea0a";
+}
+.icon-minus:before {
+  content: "\ea0b";
+}
+.icon-cross:before {
+  content: "\ea0f";
+}
+.icon-checkbox-checked:before {
+  content: "\ea52";
+}
+.icon-checkbox-unchecked:before {
+  content: "\ea53";
+}
+.icon-radio-checked:before {
+  content: "\ea54";
+}
+.icon-radio-unchecked:before {
+  content: "\ea56";
+}
+.icon-share2:before {
+  content: "\ea82";
+}
+.icon-mail4:before {
+  content: "\ea86";
+}
+.icon-instagram:before {
+  content: "\ea92";
+}
+.icon-telegram:before {
+  content: "\ea95";
+}

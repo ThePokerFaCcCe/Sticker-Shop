@@ -1,0 +1,54 @@
+extends layout
+block content
+  
+  form(action="" method='post' enctype='multipart/form-data')
+
+    if(item)
+      input#title(type='text' name='title' placeholder='اسم محصول' required value=item.title)
+      //   
+      select#category(name='category')
+        option(value='none') بدون دسته‌بندی
+        if(categories.length)
+          each cat in categories
+            if(cat.name != item.category)
+              option(value= cat.name ) #{cat.name}
+            else
+              option(value= cat.name selected) #{cat.name}
+      //   
+      input#price(type='number' name='price' placeholder='قیمت(تومان)' required value=item.price)
+      input#total(type='number' name='total' placeholder='تعداد' required value=item.total)
+      input#off(type='number' name='off' placeholder='تخفیف' value=item.off)
+      textarea#info(name='info' required) #{item.info}
+      label#file(for='pic') انتخاب فایل
+      
+      if(item.id != -1)
+        input#pic(type='file' name='pic')
+        img.file(src=item.imgPath alt='FilePreview')
+        input(type="hidden" name="oldpicpath" value=item.pic)
+        input(type="hidden" name="id" value=item.id)
+        input(type='submit' value='ویرایش کالا')
+      else
+        input#pic(type='file' name='pic' required)
+        img.file(src=item.imgPath alt='FilePreview')
+        input(type='submit' value='افزودن کالا')
+
+
+    else
+      input#title(type='text' name='title' placeholder='اسم محصول' required)
+      //   
+      select#category(name='category')
+        option(value='none') بدون دسته‌بندی
+        if(categories.length)
+          each cat in categories
+            option(value= cat.name) #{cat.name}
+      //   
+      input#price(type='number' name='price' placeholder='قیمت(تومان)' required)
+      input#total(type='number' name='total' placeholder='تعداد' required)
+      input#off(type='number' name='off' placeholder='تخفیف')
+      textarea#info(name='info' required)
+      label#file(for='pic') انتخاب فایل
+      input#pic(type='file' name='pic' required)
+      img.file(src='' alt='FilePreview')
+      input(type='submit' value='افزودن کالا')
+
+  script(src='/content/admin.js')

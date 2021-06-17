@@ -1,0 +1,16 @@
+extends layout
+block content
+    if(loggedIn)
+        h5.error #{loggedIn}
+    else
+        if(error&&error.length>0)
+            each err of error
+                h5.error #{err.msg}
+        form.auth(method="post", action='#')
+            div.auth-info
+                span.auth-current ثبت نام / 
+                a.auth-another(href='/login') ورود
+            input(type="text", name="name", placeholder="نام", required)
+            input(type="email", name="email", placeholder="ایمیل", required)
+            input(type="password", name="pass", placeholder="رمز", required)
+            input(type="submit", value="ساخت حساب")

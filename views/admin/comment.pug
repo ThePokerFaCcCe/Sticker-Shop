@@ -1,0 +1,152 @@
+extends layout 
+block content 
+  #popup 
+    .popup-form 
+      textarea#new-comment()
+      .btns
+        span#p-eacc ویرایش و تایید
+        span#p-cancel لغو
+  
+  if(type==="acc")
+    table.comments
+      caption آخرین کامنت های تایید شده
+      thead
+        tr
+          th آیدی
+          th کاربر
+          th متن
+          th پاسخ به
+          th ویرایش
+          th حذف
+      tbody
+        if(comments&&comments.length>0)
+          each comment in comments
+            tr
+              td
+                a(href=`/admin/comment/${comment.id}`) #{comment.id}
+
+              td.c-author #{comment.author}
+              td.c-text #{comment.text}
+
+              td 
+                if(comment.reply_to>0)
+                  a(href=`/admin/comment/${comment.reply_to}`) آیدی: #{comment.reply_to}
+                else 
+                  a -
+
+              td
+                span.icon-pencil.c-eacc(cid=comment.id)
+              td
+                span.icon-cross.c-del(cid=comment.id)
+                span.icon-cross.c-delS(cid=comment.id)
+
+
+  else if(type==="uacc")
+    table.comments
+      caption کامنت های تایید نشده
+      thead
+        tr
+          th آیدی
+          th کاربر
+          th متن
+          th پاسخ به
+          th تایید
+          th ویرایش و تایید
+          th حذف
+      tbody
+        if(comments&&comments.length>0)
+          each comment in comments
+            tr
+              td
+                a(href=`/admin/comment/${comment.id}`) #{comment.id}
+
+              td.c-author #{comment.author}
+              td.c-text #{comment.text}
+              td 
+                if(comment.reply_to>0)
+                  a(href=`/admin/comment/${comment.reply_to}`) آیدی: #{comment.reply_to}
+                else 
+                  a -
+              td
+                span.icon-plus.c-acc(cid=comment.id)
+                span.icon-plus.c-accS(cid=comment.id)
+              td
+                span.icon-pencil.c-eacc(cid=comment.id)
+              td
+                span.icon-cross.c-del(cid=comment.id)
+                span.icon-cross.c-delS(cid=comment.id)
+
+  else if(type==="del")
+    table.comments
+      caption کامنت های حذف شده
+      thead
+        tr
+          th آیدی
+          th کاربر
+          th متن
+          th پاسخ به
+          th تایید
+          th ویرایش و تایید
+      tbody
+        if(comments&&comments.length>0)
+          each comment in comments
+            tr
+              td
+                a(href=`/admin/comment/${comment.id}`) #{comment.id}
+
+              td.c-author #{comment.author}
+              td.c-text #{comment.text}
+              td 
+                if(comment.reply_to>0)
+                  a(href=`/admin/comment/${comment.reply_to}`) آیدی: #{comment.reply_to}
+                else 
+                  a -
+              td
+                span.icon-plus.c-acc(cid=comment.id)
+                span.icon-plus.c-accS(cid=comment.id)
+              td
+                span.icon-pencil.c-eacc(cid=comment.id)
+
+
+  else if(type==="one")
+    table.comments
+      caption کامنت #{`تایید ${(comment.accepted)?"شده":"نشده"} ${(comment.hidden)?"و حذف شده":`${(comment.sub_is_hidden)?"و بدلیل حذف کامنت اصلی، حذف شده":""}`}`}
+      thead
+        tr
+          th آیدی
+          th کاربر
+          th متن
+          th پاسخ به
+          if(!comment.accepted || comment.hidden)
+            th تایید
+            th ویرایش و تایید
+          else
+            th ویرایش
+          if(!comment.hidden)
+            th حذف
+      tbody
+        tr
+          td
+            a(href=`/admin/comment/${comment.id}`) #{comment.id}
+
+          td.c-author #{comment.author}
+          td.c-text #{comment.text}
+          td 
+            if(comment.reply_to>0)
+              a(href=`/admin/comment/${comment.reply_to}`) آیدی: #{comment.reply_to}
+            else 
+              a -
+          if(!comment.accepted || comment.hidden)
+            td
+              span.icon-plus.c-acc(cid=comment.id)
+              span.icon-plus.c-accS(cid=comment.id)
+          
+          td
+            span.icon-pencil.c-eacc(cid=comment.id)
+          
+          if(!comment.hidden)
+            td
+              span.icon-cross.c-del(cid=comment.id)
+              span.icon-cross.c-delS(cid=comment.id)
+
+  script(src="/content/comment.js") 

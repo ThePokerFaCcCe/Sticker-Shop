@@ -1,0 +1,84 @@
+extends layout
+block content
+  if(item)
+    .content-box
+      .item(total = item.total, id=item.id)
+        .item-pics
+          img(src=`${staticPath}/${item.pic}`, alt="Image")
+        .item-body
+          .item-title 
+            a(href=`/category/${item.category}`) #{item.category}
+            |  /  
+            | #{item.title}
+            if(user.rank==='admin')
+              .ad-work
+                a(href=`/admin/item?edit=${item.id}`) ویرایش 
+                |  /  
+                a(href=`/admin/item?delete=${item.id}`)  حذف
+          ul.item-info
+            each info in item.infoes
+              li #{info}
+          .item-count-box
+            span.item-count #{(item.exists)?`${item.total}  عدد موجود است`:"موجود نیست"}
+            span  / 
+            span.item-sold #{item.sold} عدد فروخته شده
+          .item-price-box
+            | قیمت: 
+            if(item.priceOff)
+              span.item-price(style="text-decoration-line: line-through;color: #666;font-size: 10px;") #{item.price}
+              span.item-off  تخفیف %#{item.off}: #{item.priceOff}
+            else
+              span.item-price #{item.price}
+            |  تومان 
+          if(item.exists)
+            .item-addcart
+              label(for="add-count") تعداد
+              input#add-count(type="number", min=1, max= item.total, value = 1)
+              span#add-cart
+                | افزودن به سبد خرید
+                span#add-success انجام شد
+                span#add-error خطایی رخ داد
+                span#add-guest مهمان هستید!
+      .comment-box
+        h4.comments-title ثبت نظر
+        .add-comment 
+          if(msg)
+            h5.error #{msg}
+          form#add-comment(action="", method="post")
+            textarea#new-comment(name="comment", placeholder="نظر خود را بنویسید")
+            //- input#itemid(type="hidden", value = item.id)
+            input#replyto(type="hidden", value = '0', name='replyto')
+            input#add-comment(type="submit", value="ثبت نظر")
+        if(item.comments)
+          h4.comments-title نظرات کاربران
+          .comments
+            each comment of item.comments
+              if(comment.accepted || comment.user_id === user.id || user.rank==='admin')
+                .comment(id=comment.id style=`${(!comment.accepted)?"opacity:0.6":""}`)
+                  .comment-head
+                    span(class=`comment-author ${(comment.isAdmin)?"comment-admin":""}`) #{comment.author}
+                    if(comment.accepted)
+                      span.comment-reply جواب
+                    else 
+                      span.comment-awaiting در انتظار تایید
+                    a(href=`/admin/comment/${comment.id}`) مشخصات
+                    span.comment-date #{comment.write_date}
+                  .comment-text #{comment.text}                  
+                  if(comment.subComments)
+                    each subComment of comment.subComments
+                      if(subComment.accepted || subComment.user_id === user.id|| user.rank==='admin')
+                        .comment(style=`${(!subComment.accepted)?"opacity:0.6":""}`)
+                          .comment-head
+                            span(class=`comment-author ${(subComment.isAdmin)?"comment-admin":""}`) #{subComment.author}
+                            if(!subComment.accepted) 
+                              span.comment-awaiting در انتظار تایید
+                            a(href=`/admin/comment/${comment.id}`) مشخصات
+                            span.comment-date #{subComment.write_date}
+                          .comment-text #{subComment.text}
+
+        else 
+          h4.comments-title هیچ نظری ثبت نشده
+  else 
+    h5.error #{msg}
+block script
+  script(src="/content/item.js")

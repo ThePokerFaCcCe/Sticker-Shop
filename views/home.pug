@@ -1,0 +1,52 @@
+extends layout
+block content
+  if(headpic.use)
+    header.head-pics
+      each hp of headpic.value
+        .head-pic
+          .head-pic-dark
+            img.head-pic-img(src=`${staticPath}/${hp.pic}` alt='picture')
+          .head-pic-info
+            h2.head-pic-title #{hp.head}
+            p.head-pic-text #{hp.text}
+
+
+  if(cats.use && cats.value && cats.value.length >0)
+    .categories-box
+      h2.header-text دسته‌بندی ها
+      .categories
+        each cat of cats.value
+          .category-card
+            .category-card-img
+              img(src=`${staticPath}/${cat.pic}` alt='img')
+            a.category-card-link(href=`/category/${cat.name}`) #{cat.name}
+
+            
+  if(items.use && items.value && items.value.length>0)
+    each product of items.value
+      .product-list
+        h2.header-text #{product.catName}
+        //  slider-box  
+        .owl-carousel.owl-theme
+          each item of product.items
+            .slider-item(item_id=item.id)
+              .slider-item-more-box
+                .slider-item-show-more-box
+                  span.slider-item-show-more بیشتر
+                .slider-item-more
+                  span.slider-item-like
+                    if(item.liked)
+                      span.icon-heart.liked(title='افزودن به علاقه‌مندی ها' )
+                        span.slider-item-likes-count #{item.likes}
+                    else
+                      span.icon-heart(title='افزودن به علاقه‌مندی ها' )
+                        span.slider-item-likes-count #{item.likes}
+                  a.slider-item-view(href=`/item/${item.id}`) مشاهده محصول
+                  span.slider-item-addcart #{(item.inCart)?"حذف از سبد":"افزودن به سبد"}
+                img.slider-item-img(src=`${staticPath}/${item.pic}` alt='img')
+              .slider-item-info
+                h6.slider-item-name #{item.title}
+                span.slider-item-price #{item.price}
+block script
+  script(src='/content/homepage.js')
+  script(src='/content/like.js')

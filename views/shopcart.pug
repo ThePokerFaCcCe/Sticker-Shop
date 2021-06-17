@@ -1,0 +1,49 @@
+extends layout
+block content
+  table.shopcart
+    thead
+      tr
+        th(colspan='2') کالا
+        th قیمت
+        th تعداد
+        th قیمت کل
+        th
+    tbody
+      each item in cart
+        tr(item=item.id count=item.count price=item.price total=item.total)
+          td
+            img.cart-img(src=`${staticPath}/${item.pic}`, alt="Image")
+          td
+            a(href=`/item/${item.id}`) #{item.title}
+          td #{item.price}
+          td(style='position:relative')
+            input.count(type="number", value=item.count, min=1, max=item.total)
+            span.confirm.icon-pencil
+          td.itemprice #{item.price*item.count}
+          td 
+            span.icon-cross.rem
+            span.icon-plus.redo
+
+
+  .cart-summary
+    h2 جمع سبد خرید
+    .cart-price
+      span#price #{fullPrice}
+      span تومان
+    h2 شیوه دریافت
+    .how-deliver
+      .deliver-type
+        label(for='normal') پست ساده : 10000 تومان
+        input#normal(type='radio' name='deliver' value='normal' required price=10000)
+      .deliver-type
+        label(for='fast') پست سریع : 20000 تومان
+        input#fast(type='radio' name='deliver' value='fast' required price=20000)
+    h2 جمع کل خرید
+    .cart-full-price
+      span#full-price
+      span تومان
+    a.complete-cart(href='#') تکمیل خرید
+
+    
+block script 
+  script(src='/content/shopcart.js')

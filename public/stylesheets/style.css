@@ -1,0 +1,463 @@
+:root{
+	--errOp:0;
+	--sucOp:0;
+}
+*{
+  direction: rtl;
+}
+body{
+	position: relative;
+}
+a{
+  text-decoration: none;
+}
+ul{
+  list-style: none;
+}
+.nav-top {
+	box-shadow: 0px 1px 5px 0px #dddd;
+	/* position: fixed; */
+  width: 100%;
+  z-index: 5;
+}
+.nav-top-button {
+	display: inline-block;
+	position: fixed;
+	bottom: 10px;
+	padding: 15px 10px;
+	border: 1px solid #ebebeb;
+	box-shadow: 1px 2px 5px -2px #333;
+	border-radius: 50%;
+	right: 10px;
+	font-weight: bold;
+	line-height: 0px;
+	background-color: white;
+}
+.nav-top-button{
+	display: none;
+}
+.nav-top-header {
+	/* display: flex; */
+	/* flex-flow: row nowrap; */
+	/* justify-content: space-between; */
+	padding: 20px 10px;
+	display: grid;
+	grid-template-columns: 2fr 3fr 2fr;
+	align-items: center;
+	border-bottom: 1px solid #ddddff;
+}
+.nav-top-left form {
+  position: relative;
+}
+.nav-top-left input {
+	border: 1px solid #ebebeb;
+	padding: 10px 15px 10px 38px;
+  width: 100%;
+  border-radius: 5px;
+	background-color: #f4f4f4;
+}
+.nav-top-left button {
+	position: absolute;
+	padding: 0px 10px;
+	border-radius: 50%;
+	left: 2px;
+	top: 5px;
+	bottom: 5px;
+	background-color: #eaeaea;
+	justify-content: center;
+	display: flex;
+	align-items: center;
+}
+.nav-top-logo {
+	justify-self: center;
+	color: grey;
+	font-weight: bolder;
+	font-size: 26px;
+	text-shadow: 1px 1px 5px;
+}
+.nav-top-right {
+	justify-self: right;
+}
+.nav-top-right a {
+	color: black;
+	background-color: #ebebeb;
+	padding: 10px 15px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+  position: relative;
+  display: inline-block;
+}
+.nav-top-right a i{
+}
+.nav-top-right a span {
+	position: absolute;
+	right: 10%;
+	bottom: 10%;
+	background-color: red;
+	color: white;
+	padding: 1px 2px;
+	font-size: 12px;
+	font-weight: bold;
+	border-radius: 50%;
+}
+.nav-top-header button:hover,.nav-top-header a:not(.nav-top-logo):hover{
+  background-color: rgb(223, 223, 223);
+  box-shadow:0px 1px 3px 0px #333;
+}
+.nav-top-items {
+	padding: 0px 15px;
+	background-color: #ffe6e6;
+}
+.nav-top-items ul{
+
+}
+.nav-top-items li {
+	display: inline-block;
+  padding: 10px 15px;
+  position: relative;
+}
+/* .nav-top-items ul>li:not(:last-child)::after{
+  content: "|";
+} */
+.nav-top-items a {
+	color: black;
+	padding: 2px;
+	display: block;
+}
+.nav-top-items li:hover ul {
+  display: block;
+}
+.hidden{
+	display: none;
+}
+.nav-top-items li ul {
+	position: absolute;
+	top: 100%;
+	background-color: #ffd5d5;
+	right: 0px;
+	width: 100%;
+	box-shadow: 0px 2px 5px 0px #ddd;
+}
+.nav-top-items li ul li {
+	display: block;
+	width: 100%;
+	padding: 10px;
+}
+
+.box-item {
+	margin: 15px 5px;
+	padding: 15px 10px;
+	border: 1px solid #ddd;
+}
+
+.box-item-title {
+	font-size: 20px;
+	border-bottom: 1px solid #333;
+	padding: 0px 10px 10px;
+}
+.items {
+	background-color: #f9f9f9;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	display: flex;
+	flex-flow: row nowrap;
+}
+
+.item-card {
+	margin: 10px 20px;
+	display: inline-block;
+	border: 2px solid #f1f1f1;
+	color: white;
+	text-shadow: 0px 0px 1px #333,1px 0px 1px #333,0px -1px 1px #333,-1px 0px 1px #333;
+}
+.item-card-head {
+	background-color: #e6e6e6;
+	text-align: center;
+	padding: 5px 2px;
+	margin-bottom: 5px;
+	border-bottom: 1px solid #bdbdbd;
+}
+.item-card-pic {
+	width: 150px;
+	height: 150px;
+}
+.item-card-foot {
+	background-color: #333;
+	color: #f1f1f1;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	padding: 5px;
+	align-items: center;
+}
+.item-card-date {
+	font-size: 10px;
+}
+.item-card-price::before {
+	content: "تومان";
+	font-weight: lighter;
+	font-size: 11px;
+	margin-left: 4px;
+	color: #b0b0b0;
+}
+.item-card-price {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+
+
+.head-top {
+	background-image: url("imgs/background.jpg");
+	background-repeat: repeat-x;
+	background-attachment: fixed;
+	background-size: cover;
+	height: 400px;
+	margin: 30px 0 50px;
+}
+.head-top-dark {
+	background-color: rgba(0,0,0,0.6);
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	justify-content: center;
+	color: #f9f9f9;
+}
+.head-top h1 {
+	font-size: 50px;
+	text-shadow: 1px 2px 3px #ddd;
+	letter-spacing: 1px;
+}
+.head-top h3 {
+	margin-top: 30px;
+	font-size: 25px;
+}
+.head-top h4 {
+	font-size: 20px;
+}
+
+footer {
+	padding: 30px 50px;
+	margin-top: 10px;
+	background-color: #e5e5e5;
+	text-align: center;
+	direction: ltr;
+	text-shadow: 0px 1px 3px #333;
+}
+
+
+h3.error {
+	width: 100%;
+	text-align: center;
+	padding: 20px;
+	background-color: #ff4949;
+	border-radius: 20px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #ffe5b5;
+}
+/* CATEGORY */
+.box-category {
+	background-color: #f7f7f7;
+}
+.box-category-title {
+	font-size: 26px;
+	border-bottom: 2px solid #333;
+	padding: 10px 15px;
+	background-color: #ededed;
+}
+
+/* ITEM */
+.item-info {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	justify-content: center;
+	padding: 10px 0;
+}
+.item-img {
+	width: 250px;
+	height: 300px;
+	margin-left: 50px;
+}
+.item-body{
+
+}
+.item-name {
+	font-size: 26px;
+	margin-bottom: 20px;
+}
+.item-about{
+
+}
+.item-about li {
+	padding-bottom: 5px;
+	font-size: 16px;
+}
+.item-price {
+	margin: 10px 0px 15px;
+}
+.item-price::after {
+	content: " تومان";
+	font-weight: normal;
+}
+.item-price::before {
+	content: "قیمت: ";
+	font-weight: normal;
+}
+.item-add-cart {
+	padding: 10px 15px;
+	border: 1px solid #666;
+	color: #fff;
+	background-color: #9f0f0f;
+	width: 100%;
+	position: relative;
+	transition: 1s;
+}
+.item-add-cart:active {
+	background: red;
+}
+.item-add-cart::after {
+	top: 0%;
+	content: "افزوده شد";
+	position: absolute;
+	color: black;
+	background-color: #6eff6e;
+	width: 100%;
+	left: 0px;
+	padding: 10px 0px;
+	opacity: var(--sucOp);
+}
+.item-add-cart::before {
+	top: 0%;
+	content: "خطایی رخ داد";
+	position: absolute;
+	color: black;
+	background-color: #f00;
+	width: 100%;
+	left: 0px;
+	padding: 10px 0px;
+	opacity: var(--errOp);
+}
+
+
+/* shopcart */
+.shopcart {
+	width: 80%;
+	text-align: center;
+	border-collapse: collapse;
+}
+.shopcart thead {
+	border: 2px solid #848484;
+}
+.shopcart th, td {
+	padding: 15px 0;
+}
+
+.shopcart td {
+	border: 1px solid #ddd;
+	height: 100%;
+	vertical-align: middle;
+}
+.shopcart tbody tr td:last-child {
+	color: #ff1d1d;
+}
+.shopcart a{
+	color:#666666;
+	transition: 0.2s;
+}
+.shopcart a:hover {
+	color: #220101;
+}
+.cart-summary {
+	background-color: #ffb1b1;
+	padding: 30px 20px;
+	margin: 50px 0px;
+}
+.cart-summary h2 {
+	background-color: #fd9a9a;
+	padding: 10px;
+	font-weight: bold;
+	font-size:18px;
+	color:white;
+}
+.cart-summary > div {
+	padding: 10px 20px;
+	background-color: #ffc1c1;
+}
+.deliver-type {
+	padding: 10px 0;
+}
+.deliver-type label {
+	padding: 0px 5px;
+	font-size: 16px;
+}
+.complete-cart {
+	display: block;
+	width: 100%;
+	background-color: red;
+	text-align: center;
+	padding: 10px 0;
+	font-weight: bold;
+	color: #fff;
+}
+.inc, .dec , .rem{
+	color: #fff;
+	padding: 0px 5px 2px;
+	background-color: #a00;
+	line-height: 0;
+	font-size: 14px;
+	font-weight: bold;
+	border-radius: 50%;
+	cursor: pointer;
+}
+.rem {
+	padding: 1px 4px;
+}
+@media only screen and (max-width:650px){
+	.nav-top-button{
+		display: inline-block;
+	}
+  .nav-top {
+	display: none;
+    box-shadow: -5px 0px 5px 0px rgb(146, 146, 146);
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    width: 90%;
+	z-index: 5;
+	background-color: #fff;
+  }
+  .nav-top-header {
+    display: flex;
+    flex-flow: column-reverse nowrap;
+    padding: 20px 10px;
+    align-items: center;
+    border-bottom: 1px solid #ddddff;
+  }
+  .nav-top-header > * {
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+  }
+  .nav-top-items li {
+    display: block;
+    padding: 10px 15px;
+    position: relative;
+  }
+  .nav-top-items li ul {
+    /* flex-flow: row wrap; */
+    position: relative;
+    background-color: #ffd5d5;
+    box-shadow: none;
+  }
+  .nav-top-items li ul li{
+	width: auto;
+	display: inline-block;
+  }
+  .nav-top-items li:hover ul {
+    display: block;
+  }
+}

@@ -1,0 +1,4 @@
+extends layout 
+block content 
+  each err in errors
+    h1.error(style="color:#f00;text-align:center;padding:15px 5px;background:#444;font-weight:bold") #{err}

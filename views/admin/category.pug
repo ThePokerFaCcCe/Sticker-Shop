@@ -1,0 +1,61 @@
+extends layout
+block content
+  table
+    caption دسته بندی های ساخته شده
+    thead
+      tr
+        th دسته بندی
+        th ویرایش
+        th حذف
+    tbody
+      if(categories)
+        each cat in categories
+          tr
+            td.cat-name #{cat.name}
+            td
+              a(href="?edit="+cat.name) ویرایش
+            td
+              a(href="?delete="+cat.name) حذف
+      else
+        tr
+          td
+            b هیچ دسته بندی نساخته اید
+
+  form(action="" method='post')
+    if(category)
+      input#name(type='text' name='name' placeholder='نام دسته بندی' required value=category.name)
+      input(type="hidden" name="oldName" value=category.name)
+      input(type='submit' value='ویرایش دسته‌بندی')
+
+    else
+      input#name(type='text' name='name' placeholder='نام دسته بندی' required)
+      input(type='submit' value='افزودن دسته‌بندی')
+
+  script.  
+    const ul = document.getElementById("msgs");
+    
+        function error(err) {
+            const li = document.createElement("li");
+            li.innerHTML = err;
+            li.classList.add("err");
+            while(ul.lastChild){
+              ul.removeChild(ul.lastChild);
+            }
+            ul.appendChild(li);
+        }
+        const categories = ["عمومی"];
+        const input = document.getElementById("name");
+        const tds = document.getElementsByClassName("cat-name");
+        const form = document.getElementsByTagName("form")[0];
+        for (td of tds) {
+            categories.push(td.innerHTML)
+        }
+        form.onsubmit = () => {
+            if (categories.indexOf(input.value) === -1) {
+                return true
+            } else {
+                error("این دسته بندی وجود دارد");
+                return false
+            }
+        }
+    
