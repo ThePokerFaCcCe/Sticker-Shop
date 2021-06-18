@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 _HOME = __dirname;
+_config = require("./configs/config")
 const dotenv = require("dotenv").config();
 if (dotenv.error) throw dotenv.error;
 
