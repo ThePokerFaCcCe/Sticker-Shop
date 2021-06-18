@@ -21,12 +21,12 @@ router.get('/', async (req, res) => {
                     cartitem.destroy();
                 }
             }
-            res.render("shopcart", { staticPath: process.env.STATICPATH, cart: cart, fullPrice: fullPrice, ...req.important });
+            res.render("shopcart", { staticPath: _config.path.STATICPATH, cart: cart, fullPrice: fullPrice, ...req.important });
         } else {
-            err = process.env.ERR_EMPTYCART;
+            err = _config.msg.ERR_EMPTYCART;
         }
     } else {
-        err = process.env.ERR_GUEST;
+        err = _config.msg.ERR_GUEST;
     }
     if (err) {
         res.render('erroruser', { errors: [err], ...req.important });

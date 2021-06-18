@@ -130,7 +130,7 @@ router.post('/cart', async (req, res) => {
                         cartItem.name = item.title;
                         cartItem.price = (item.off > 0) ? item.price - item.off / 100 * item.price : item.price;
                         cartItem.count = cart.count;
-                        cartItem.pic = `${process.env.STATICPATH}/${item.pic}`
+                        cartItem.pic = `${_config.path.STATICPATH}/${item.pic}`
                         items.push(cartItem);
                     } else {
                         await cart.destroy();

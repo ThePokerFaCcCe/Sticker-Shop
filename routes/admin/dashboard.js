@@ -3,7 +3,7 @@ const router = express.Router();
 
 // const bodyParser = require('body-parser');
 const multer = require('multer');
-upload = multer({ dest: process.env.IMGPATH });
+upload = multer({ dest: _config.path.IMGPATH });
 
 const items = require("./items");
 const category = require('./category');

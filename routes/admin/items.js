@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
         const itemID = req.query.edit;
         const item = await Item.findOne({ where: { id: itemID } });
         if (item) {
-            item.imgPath = `${process.env.STATICPATH}/${item.pic}`;
+            item.imgPath = `${_config.path.STATICPATH}/${item.pic}`;
             res.render("admin/items", { item: item, categories: categories });
             return
         }
@@ -77,7 +77,7 @@ router.post('/', pickedFile, async (req, res) => {
         }
         if (!req.file) {
             await item.save();
-            item.imgPath = `${process.env.STATICPATH}/${item.pic}`;
+            item.imgPath = `${_config.path.STATICPATH}/${item.pic}`;
             res.render("admin/items", { msg: `محصول ${item.title} ویرایش شد`, item: item, categories: categories });
             return
         }
@@ -85,7 +85,7 @@ router.post('/', pickedFile, async (req, res) => {
 
     // const imgName = `${crypto.randomBytes(10).toString('hex')}${req.file.originalname}`;
     const imgName = `${crypto.randomBytes(5).toString('hex')}${Date.now()}${req.file.originalname}`;
-    const imgPath = `${process.env.IMGPATH}/${imgName}`;
+    const imgPath = `${_config.path.IMGPATH}/${imgName}`;
     fs.readFile(req.file.path, (err, data) => {
         fs.writeFile(imgPath, data,
             async (err) => {
@@ -93,12 +93,12 @@ router.post('/', pickedFile, async (req, res) => {
                 if (!item) {
                     params.pic = imgName;
                     const item = await Item.create(params);
-                    item.imgPath = `${process.env.STATICPATH}/${imgName}`;
+                    item.imgPath = `${_config.path.STATICPATH}/${imgName}`;
                     res.render("admin/items", { msg: `محصول ${item.title} افزوده شد`, item: item, categories: categories });
                 } else { // FOR EDITING..
                     item.pic = imgName;
                     await item.save();
-                    item.imgPath = `${process.env.STATICPATH}/${imgName}`;
+                    item.imgPath = `${_config.path.STATICPATH}/${imgName}`;
                     await fs.unlinkSync(req.file.path);
                     res.render("admin/items", { msg: `محصول ${item.title} ویرایش شد`, item: item, categories: categories });
                 }

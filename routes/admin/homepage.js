@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
     res.render("admin/homepage", {
         msg: msg,
         categories: req.categories,
-        staticPath: process.env.STATICPATH,
+        staticPath: _config.path.STATICPATH,
         ...params,
     });
 });
@@ -81,7 +81,7 @@ router.post("/", pickedFile, async (req, res) => {
                 if (picheader.length > 3 && pictext.length > 3) {
                     if (fileCheck(pic)) {
                         const imgName = `${parseInt(Math.random() * 1e5)}${Date.now()}${pic.originalname}`;
-                        const imgPath = `${process.env.IMGPATH}/${imgName}`;
+                        const imgPath = `${_config.path.IMGPATH}/${imgName}`;
                         fs.renameSync(pic.path, imgPath);
 
                         const params = { name: "headpic", use: true };
@@ -120,7 +120,7 @@ router.post("/", pickedFile, async (req, res) => {
                     const imgName = `${parseInt(
                         Math.random() * 1e5
                     )}${Date.now()}${pic.originalname}`;
-                    const imgPath = `${process.env.IMGPATH}/${imgName}`;
+                    const imgPath = `${_config.path.IMGPATH}/${imgName}`;
                     fs.renameSync(pic.path, imgPath);
 
                     const params = { name: "category", use: true };
@@ -197,7 +197,7 @@ router.post("/", pickedFile, async (req, res) => {
         msg = "خطایی رخ داد...";
     }
     const params = await homeParser(req.categories)
-    res.render("admin/homepage", { categories: req.categories, msg: msg, staticPath: process.env.STATICPATH, ...params });
+    res.render("admin/homepage", { categories: req.categories, msg: msg, staticPath: _config.path.STATICPATH, ...params });
 });
 
 module.exports = router;

@@ -138,7 +138,7 @@ async function homeParser(categories, admin = true, onlyMsg = false) {
             }
         }
 
-        params.staticPath = process.env.STATICPATH;
+        params.staticPath = _config.path.STATICPATH;
         return params;
     }
 }

@@ -33,7 +33,7 @@ router.get("/:catName", async (req, res) => {
             }
         });
     }
-    res.render("category", { catName: catName, items: items, staticPath: process.env.STATICPATH, itemLink: "/item", ...req.important });
+    res.render("category", { catName: catName, items: items, staticPath: _config.path.STATICPATH, itemLink: "/item", ...req.important });
 });
 
 

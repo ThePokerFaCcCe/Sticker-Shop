@@ -36,7 +36,7 @@ router.get('/:id', async (req, res) => {
             item.exists = (item.total > 0) ? true : false;
             const comments = await Comment.findAll({ where: { item_id: item.id, hidden: false, /*accepted: true,*/ reply_to: 0 }, order: [['write_date', 'DESC']] });
             item.comments = await getComments(comments, item.id);
-            res.render("item", { item: item, staticPath: process.env.STATICPATH, ...req.important });
+            res.render("item", { item: item, staticPath: _config.path.STATICPATH, ...req.important });
             return;
         } else {
             msg = 'کالا یافت نشد';
@@ -44,7 +44,7 @@ router.get('/:id', async (req, res) => {
     } else {
         msg = 'کالا یافت نشد';
     }
-    res.render("item", { msg: msg, staticPath: process.env.STATICPATH, ...req.important });
+    res.render("item", { msg: msg, staticPath: _config.path.STATICPATH, ...req.important });
 
 });
 
@@ -104,7 +104,7 @@ router.post(
 
         }
 
-        res.render("item", { msg: msg, item: item, staticPath: process.env.STATICPATH, ...req.important });
+        res.render("item", { msg: msg, item: item, staticPath: _config.path.STATICPATH, ...req.important });
     }
 );
 
