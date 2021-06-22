@@ -3,7 +3,8 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./index.js"
+    "start":"cross-env-shell NODE_ENV=production && node ./index.js",
+    "dev" : "cross-env-shell NODE_ENV=development && nodemon ./index.js"
   },
   "dependencies": {
     "@prisma/client": "^2.18.0",
